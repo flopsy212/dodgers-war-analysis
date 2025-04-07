@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # データ読み込み
-df = pd.read_csv("nl_west_2024_stats.csv")
+df = pd.read_csv("nl_west_2024_stats.csv", encoding="utf-8-sig")
 
 # 指標とチームを選ぶ
 metric = st.selectbox("📊 比較する指標を選んでください", ["OPS", "WAR", "AVG", "HR"])
