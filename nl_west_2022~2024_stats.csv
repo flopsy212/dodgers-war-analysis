@@ -25,4 +25,4 @@ for year in years:
             all_data.append(row.iloc[0])
 
 df = pd.DataFrame(all_data)
-df.to_csv("nl_west_3yr_stats.csv", index=False)
+df.to_csv("nl_west_2022~2024_stats.csv", index=False)
