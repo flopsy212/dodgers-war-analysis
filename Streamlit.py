@@ -5,7 +5,7 @@ from matplotlib.patches import Patch
 import seaborn as sns
 
 # CSV読み込み
-df = pd.read_csv("nl_west_2024_stats_with_new.csv", encoding="cp932")
+df = pd.read_csv("nl_west_2022~2024_stats_with_new.csv", encoding="cp932")
 
 # チームカラー定義
 team_colors = {
