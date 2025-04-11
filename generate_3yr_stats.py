@@ -12,7 +12,9 @@ players = [
 ]
 
 # 対象年（2022～2024）
-years = [2022, 2023, 2024]
+years = st.multiselect("📅 比較する年度を選んでください", df["Season"].unique(), default=[2024])
+df_selected = df_selected[df_selected["Season"].isin(years)]
+
 
 # 全データをまとめて入れるリスト
 all_data = []
