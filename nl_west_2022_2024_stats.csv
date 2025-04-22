@@ -1,15 +1,17 @@
 import pandas as pd
 from pybaseball import batting_stats
+import csv
 
-players = [ ... ]  # 省略
+players = [ ... ]  # あなたが指定した選手名のリスト
 years = [2022, 2023, 2024]
 all_data = []
 
 team_map = {
     "Shohei Ohtani": "Dodgers",
     "Freddie Freeman": "Dodgers",
-    ...
+    # 以下略
 }
+
 new_players = ["Teoscar Hernandez", "Tommy Edman", "Luis Arraez", "Gavin Sheets", "Elias Diaz"]
 
 for year in years:
@@ -25,6 +27,4 @@ for year in years:
             all_data.append(row.iloc[0])
 
 df = pd.DataFrame(all_data)
-import csv
-df.to_csv("nl_west_2022_2024_stats.csv", index=False, quoting=csv.QUOTE_ALL)
-
+df.to_csv("nl_west_2022_2024_stats.csv", index=False, quoting=csv.QUOTE_ALL, encoding="utf-8")
