@@ -6,7 +6,7 @@
 過去3年分（2022〜2024年）のデータを使い、
 **チーム力・補強状況・打線の厚み** を比較・分析できます。
 
-> 本当はリーグ戦開始前に公開したかったのですが、気付けば10試合以上が経過…  
+> 本当はリーグ戦開始前に公開したかったのですが、気付けば20試合以上が経過…  
 > 比較対象はNL西地区の5チームのみに限ります。
 
 - Dodgers（ドジャース）
@@ -57,14 +57,16 @@ streamlit run streamlit.py
 
 - データはFangraphs・Baseball Savant等を参照し、手動でCSV整備しました
 - `generate_3yr_stats.py` を用いると、pybaseballから自動で3年分の成績取得が可能です
-- アプリは [Streamlit Cloud](https://dodgers-war-analysis-XXXXX.streamlit.app) で公開中です
+- アプリは [Streamlit Cloud]([https://dodgers-war-analysis-X.streamlit.app](https://dodgers-war-analysis-n2ayxkwwwkftewh7crwyv4.streamlit.app/)) で公開中です
 
 ---
 
 ## 💬 今後の展望
 
-- AIでHRやOPSの予測モデルを追加予定（scikit-learnで回帰モデル）
-- 補強インパクトのスコアリングや、チームごとのポジションバランス分析もやりたい
+- 今後はOPSやWARなど他指標にも予測範囲を拡張予定
+- 補強選手の “成功スコア” を定量化し、チーム間での補強インパクトを比較
+- チーム戦略や起用法の「数字によるシミュレーション」や「予測 vs 実績の検証」にも挑戦予定
+
 
 ---
 
