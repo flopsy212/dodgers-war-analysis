@@ -1,30 +1,62 @@
-import pandas as pd
-from pybaseball import batting_stats
-import csv
-
-players = [ ... ]  # あなたが指定した選手名のリスト
-years = [2022, 2023, 2024]
-all_data = []
-
-team_map = {
-    "Shohei Ohtani": "Dodgers",
-    "Freddie Freeman": "Dodgers",
-    # 以下略
-}
-
-new_players = ["Teoscar Hernandez", "Tommy Edman", "Luis Arraez", "Gavin Sheets", "Elias Diaz"]
-
-for year in years:
-    stats = batting_stats(year)
-    stats["season"] = year
-    for player in players:
-        row = stats[stats["Name"] == player]
-        if not row.empty:
-            row = row.copy()
-            row["Name"] = player
-            row["Team"] = team_map[player]
-            row["New"] = (player in new_players) and (year == 2024)
-            all_data.append(row.iloc[0])
-
-df = pd.DataFrame(all_data)
-df.to_csv("nl_west_2022_2024_stats.csv", index=False, quoting=csv.QUOTE_ALL, encoding="utf-8")
+﻿Team,Name,OPS,WAR,AVG,HR,New
+Dodgers,Shohei Ohtani,1.066,7.4,0.304,54,TRUE
+Dodgers,Mookie Betts,0.857,6.2,0.293,31,FALSE
+Dodgers,Freddie Freeman,0.976,5.9,0.331,28,FALSE
+Dodgers,Teoscar Hernandez,0.765,2.2,0.261,26,TRUE
+Dodgers,Max Muncy,0.797,2.8,0.214,35,FALSE
+Dodgers,Will Smith,0.797,3.6,0.264,21,FALSE
+Dodgers,Michael Conforto,0.728,1.3,0.238,17,TRUE
+Dodgers,Gavin Lux,0.672,0.1,0.225,8,FALSE
+Dodgers,Tommy Edman,0.701,2.5,0.252,12,TRUE
+Padres,Luis Arraez,0.861,3.8,0.354,6,FALSE
+Padres,Fernando Tatis Jr.,0.77,4.4,0.261,29,FALSE
+Padres,Jackson Merrill,0.723,1,0.268,10,TRUE
+Padres,Manny Machado,0.781,3.1,0.256,28,FALSE
+Padres,Jake Cronenworth,0.712,1.2,0.232,11,FALSE
+Padres,Xander Bogaerts,0.722,2,0.268,20,FALSE
+Padres,Jason Heyward,0.788,1.3,0.259,14,FALSE
+Padres,Gavin Sheets,0.703,0.6,0.208,10,FALSE
+Padres,Elias Diaz,0.712,1.7,0.268,13,FALSE
+Giants,LaMonte Wade Jr.,0.803,2.9,0.263,19,FALSE
+Giants,Willy Adames,0.753,3.7,0.251,23,FALSE
+Giants,Jung Hoo Lee,0.726,1.1,0.289,5,TRUE
+Giants,Matt Chapman,0.754,3.3,0.243,26,TRUE
+Giants,Heliot Ramos,0.721,1,0.247,9,TRUE
+Giants,Patrick Bailey,0.702,2.2,0.237,10,FALSE
+Giants,Brandon Crawford,0.548,-0.3,0.199,6,FALSE
+Giants,Michael Conforto,0.728,1.1,0.238,13,TRUE
+Giants,Joc Pederson,0.735,0.9,0.238,15,FALSE
+DBacks,Corbin Carroll,0.868,6.2,0.289,26,FALSE
+DBacks,Ketel Marte,0.85,4.5,0.277,27,FALSE
+DBacks,Lourdes Gurriel Jr.,0.779,2.7,0.263,23,FALSE
+DBacks,Christian Walker,0.829,4.6,0.26,34,FALSE
+DBacks,Eugenio Suarez,0.741,2,0.237,23,FALSE
+DBacks,Jake McCarthy,0.701,1,0.249,6,FALSE
+DBacks,Gabriel Moreno,0.745,3,0.28,9,FALSE
+DBacks,Geraldo Perdomo,0.708,1.7,0.249,7,FALSE
+DBacks,Jordan Luplow,0.674,0.5,0.215,6,TRUE
+Rockies,Brenton Doyle,0.667,0.7,0.21,11,FALSE
+Rockies,Ryan McMahon,0.77,3,0.247,24,FALSE
+Rockies,Ezequiel Tovar,0.667,1.7,0.258,16,FALSE
+Rockies,Kris Bryant,0.671,0.6,0.24,12,FALSE
+Rockies,Nolan Jones,0.92,3.5,0.3,21,FALSE
+Rockies,Elias Diaz,0.713,1.7,0.268,15,FALSE
+Rockies,Harold Castro,0.611,0.3,0.238,5,FALSE
+Rockies,Elehuris Montero,0.662,0.2,0.225,7,FALSE
+Rockies,Charlie Blackmon,0.733,0.6,0.258,9,FALSE
+,,,,,,
+順位｜チーム     ｜合計WAR,,,,,,
+----｜-----------｜--------,,,,,,
+1位 ｜Dodgers    ｜31.5,,,,,,
+2位 ｜DBacks     ｜25.0,,,,,,
+3位 ｜Padres     ｜17.5,,,,,,
+4位 ｜Giants     ｜15.3,,,,,,
+5位 ｜Rockies    ｜11.4,,,,,,
+,,,,,,
+,,,,,,
+Team,WAR,,,,,
+Dodgers,31.5,,,,,
+DBacks,25,,,,,
+Padres,17.5,,,,,
+Giants,15.3,,,,,
+Rockies,11.4,,,,,
