@@ -17,11 +17,11 @@ team_colors = {
 }
 
 # UI
-st.title("2025年 NL西地区 スタメン成績可視化ツール")
+st.title("2025 NL West Starter Stats Visualizer")
 
-metric = st.selectbox("📊 比較する指標を選んでください", ["OPS", "WAR", "AVG", "HR"])
-teams = st.multiselect("🏟 比較するチームを選んでください", df["Team"].unique(), default=["Dodgers", "Padres"])
-show_only_new = st.checkbox("🆕 補強選手だけを表示", value=False)
+metric = st.selectbox("Select metric", ["OPS", "WAR", "AVG", "HR"])
+teams = st.multiselect("Select teams", df["Team"].unique(), default=["Dodgers", "Padres"])
+show_only_new = st.checkbox("Show only new players", value=False)
 
 # データ選択
 df_selected = df[df["Team"].isin(teams)].copy()
@@ -32,12 +32,12 @@ df_selected = df_selected.sort_values(by=metric, ascending=False)
 colors = df_selected["Team"].map(team_colors)
 
 # タブ分岐
-tab1, tab2 = st.tabs(["📊 棒グラフ", "🧯 ヒートマップ"])
+tab1, tab2 = st.tabs(["Bar Chart", "Heatmap"])
 
 with tab1:
     fig, ax = plt.subplots(figsize=(10, 6))
     bars = ax.bar(df_selected["Label"], df_selected[metric], color=colors)
-    ax.set_title(f"{' vs '.join(teams)} の選手別 {metric}", fontsize=14)
+    ax.set_title(f"{' vs '.join(teams)} - {metric}", fontsize=14)
     ax.set_ylabel(metric)
     ax.set_xticks(range(len(df_selected)))
     ax.set_xticklabels(df_selected["Label"], rotation=45, ha='right')
@@ -46,7 +46,14 @@ with tab1:
     for team in teams:
         team_df = df_selected[df_selected["Team"] == team]
         avg_value = team_df[metric].mean()
-        ax.axhline(y=avg_value, linestyle='--', linewidth=1.2, color=team_colors[team], alpha=0.6, label=f"{team} 平均")
+        ax.axhline(
+            y=avg_value,
+            linestyle='--',
+            linewidth=1.2,
+            color=team_colors[team],
+            alpha=0.6,
+            label=f"{team} Mean"
+        )
 
     # 数値ラベル
     for bar in bars:
@@ -55,12 +62,12 @@ with tab1:
         ax.annotate(label, xy=(bar.get_x() + bar.get_width() / 2, height),
                     xytext=(0, 3), textcoords="offset points", ha="center", fontsize=9)
 
-    # 凡例（平均線とチーム色を合体）
+    # 凡例
     custom_legend = [Patch(facecolor=color, label=team) for team, color in team_colors.items() if team in teams]
     handles, labels = ax.get_legend_handles_labels()
     by_label = dict(zip(labels, handles))  # 重複除去
     combined_legend = list(by_label.values()) + custom_legend
-    ax.legend(combined_legend, list(by_label.keys()) + [t for t in teams], title="チームと平均")
+    ax.legend(combined_legend, list(by_label.keys()) + [t for t in teams], title="Teams & Mean")
 
     st.pyplot(fig)
 
@@ -71,7 +78,7 @@ with tab2:
     heat_df["Label"] = heat_df["Name"] + " (" + heat_df["Team"] + ")"
     heat_df = heat_df.set_index("Label")[["OPS", "WAR", "AVG", "HR"]]
 
-    st.write("#### 選手 × 指標のヒートマップ（濃いほど高い）")
+    st.write("### Player vs Metric Heatmap")
     fig2, ax2 = plt.subplots(figsize=(10, len(heat_df) * 0.4))
     sns.heatmap(heat_df, annot=True, fmt=".3f", cmap="YlGnBu", ax=ax2)
     st.pyplot(fig2)
