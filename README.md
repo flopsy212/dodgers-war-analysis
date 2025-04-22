@@ -80,5 +80,5 @@ streamlit run streamlit.py
 
 ---
 
-> GitHub: [https://github.com/flopsy212/dodgers-war-analysis](https://github.com/flopsy212/dodgers-war-analysis)
+> qiita: [https://qiita.com/flopsy_tech/items/76eeaff297c819e66e28]
 
