@@ -117,7 +117,7 @@ https://dodgers-war-analysis-n2ayxkwwwkftewh7crwyv4.streamlit.app/
 - **WARやOPSの指標構造の理解**：単なる数値ではなく、その算出元（打席数、出塁率、長打率など）を深掘り
 - **Streamlitのコンポーネント設計**：状態管理（SessionState）にやや苦戦したが、UI制御の練習に
 - **チーム間で選手ポジションがずれる問題**：ユーティリティ選手のWAR集計に調整が必要だった
-
+---
 ## 今後の展望
 
 - Fangraphsなど外部APIを活用した**リアルタイムデータ更新**
