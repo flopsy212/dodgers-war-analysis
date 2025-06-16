@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
-
 import seaborn as sns
 
 # CSV読み込み
