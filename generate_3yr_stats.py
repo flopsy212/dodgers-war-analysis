@@ -1,6 +1,5 @@
 # filename: generate_3yr_stats.py
 
-
 import pandas as pd
 from pybaseball import batting_stats
 
