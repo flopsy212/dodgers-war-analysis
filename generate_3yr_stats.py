@@ -3,7 +3,6 @@
 import pandas as pd
 from pybaseball import batting_stats
 
-
 # 対象選手リスト（チーム混合・姓名形式で統一）
 players = [
     "Shohei Ohtani", "Freddie Freeman", "Mookie Betts", "Teoscar Hernandez", "Max Muncy",
