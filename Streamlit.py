@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 import seaborn as sns
 
-
 # CSV読み込み
 df = pd.read_csv("nl_west_2022_2024_stats.csv", encoding="utf-8")
 
