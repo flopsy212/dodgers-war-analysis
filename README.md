@@ -1,4 +1,3 @@
-
 # ⚾ dodgers-war-analysis
 
 本プロジェクトは、2025年MLBナ・リーグ西地区（NL West）における主力スタメン選手の打撃成績（OPS・WAR・AVG・HR）を可視化・分析・比較する**Streamlit製のデータ可視化アプリ**です。  
